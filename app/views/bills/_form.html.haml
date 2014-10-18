@@ -1,0 +1,43 @@
+= form_for @bill do |f|
+  - if @bill.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@bill.errors.count, "error")} prohibited this bill from being saved:"
+      %ul
+        - @bill.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :bill_id
+    = f.text_field :bill_id
+  .field
+    = f.label :bill_uri
+    = f.text_field :bill_uri
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :sponsor_uri
+    = f.text_field :sponsor_uri
+  .field
+    = f.label :introduced_date
+    = f.date_select :introduced_date
+  .field
+    = f.label :cosponsors
+    = f.text_field :cosponsors
+  .field
+    = f.label :committees
+    = f.text_field :committees
+  .field
+    = f.label :latest_major_action_date
+    = f.date_select :latest_major_action_date
+  .field
+    = f.label :latest_major_action
+    = f.text_area :latest_major_action
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :summary
+    = f.text_area :summary
+  .actions
+    = f.submit 'Save'

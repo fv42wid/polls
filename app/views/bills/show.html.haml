@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Bill:
+  = @bill.bill_id
+%p
+  %b Bill uri:
+  = @bill.bill_uri
+%p
+  %b Title:
+  = @bill.title
+%p
+  %b Sponsor uri:
+  = @bill.sponsor_uri
+%p
+  %b Introduced date:
+  = @bill.introduced_date
+%p
+  %b Cosponsors:
+  = @bill.cosponsors
+%p
+  %b Committees:
+  = @bill.committees
+%p
+  %b Latest major action date:
+  = @bill.latest_major_action_date
+%p
+  %b Latest major action:
+  = @bill.latest_major_action
+%p
+  %b Summary
+  = @bill.summary
+%p
+  %b Text
+  = @bill.body
+
+= link_to 'Edit', edit_bill_path(@bill)
+\|
+= link_to 'Back', bills_path
