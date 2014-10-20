@@ -13,7 +13,7 @@
 
         - @bills.each do |bill|
           %tr
-            %td= bill.bill_id
+            %td= link_to bill.bill_id, bill_path(bill.id)
             %td= bill.title
             %td= bill.introduced_date
 
