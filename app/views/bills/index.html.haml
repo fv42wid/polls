@@ -1,34 +1,23 @@
-%h1 Listing bills
+%div.container
+  %div.row
+    %div.col-sm-12
 
-%table
-  %tr
-    %th Bill
-    %th Bill uri
-    %th Title
-    %th Sponsor uri
-    %th Introduced date
-    %th Cosponsors
-    %th Committees
-    %th Latest major action date
-    %th Latest major action
-    %th
-    %th
-    %th
 
-  - @bills.each do |bill|
-    %tr
-      %td= bill.bill_id
-      %td= bill.bill_uri
-      %td= bill.title
-      %td= bill.sponsor_uri
-      %td= bill.introduced_date
-      %td= bill.cosponsors
-      %td= bill.committees
-      %td= bill.latest_major_action_date
-      %td= bill.latest_major_action
-      %td= link_to 'Show', bill
-      %td= link_to 'Edit', edit_bill_path(bill)
-      %td= link_to 'Destroy', bill, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %h1 Listing bills
+
+      %table.table.table-striped.table-hover.table-condensed
+        %tr
+          %th Bill
+          %th title
+          %th Introduced date
+
+        - @bills.each do |bill|
+          %tr
+            %td= bill.bill_id
+            %td= bill.title
+            %td= bill.introduced_date
+
+
 
 %br
 
