@@ -1,38 +1,35 @@
-%p#notice= notice
+%div.container
+  %div.row
+    %div.col-sm-8
 
-%p
-  %b Bill:
-  = @bill.bill_id
-%p
-  %b Bill uri:
-  = @bill.bill_uri
-%p
-  %b Title:
-  = @bill.title
-%p
-  %b Sponsor uri:
-  = @bill.sponsor_uri
-%p
-  %b Introduced date:
-  = @bill.introduced_date
-%p
-  %b Cosponsors:
-  = @bill.cosponsors
-%p
-  %b Committees:
-  = @bill.committees
-%p
-  %b Latest major action date:
-  = @bill.latest_major_action_date
-%p
-  %b Latest major action:
-  = @bill.latest_major_action
-%p
-  %b Summary
-  = @bill.summary
-%p
-  %b Text
-  = @bill.body
+      %p#notice= notice
+
+      %h1= @bill.bill_id
+      %table.table.table-bordered.table-condensed.table-hover
+        %tr
+          %th Title
+          %td= @bill.title
+        %tr
+          %th URL
+          %td= @bill.bill_uri
+        %tr
+          %th Introduced
+          %td= @bill.introduced_date
+        %tr
+          %th Last action
+          %td= @bill.latest_major_action_date
+        %tr
+          %th Last action
+          %td= @bill.latest_major_action
+        %tr
+          %th Summary
+          %td= simple_format(@bill.summary)
+        %tr
+          %th Text
+          %td= simple_format(@bill.body)
+
+    %div.col-sm-4
+      %h2 Vote On This Bill
 
 = link_to 'Edit', edit_bill_path(@bill)
 \|
