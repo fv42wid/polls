@@ -11,7 +11,7 @@
           %td= @bill.title
         %tr
           %th URL
-          %td= @bill.bill_uri
+          %td= link_to @bill.bill_uri, @bill.bill_uri
         %tr
           %th Introduced
           %td= @bill.introduced_date
