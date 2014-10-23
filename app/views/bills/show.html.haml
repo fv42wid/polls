@@ -38,6 +38,13 @@
         %button.btn.btn-danger{:type => 'button', :disabled => 'disabled'} Vote No
       %small Log in to vote now!
 
+      %div.row.bill-votes
+        %div.col-sm-12
+          %span.label.label-success 59% For
+          %span.label.label-danger 41% Against
+          %br
+          = link_to "See My District", "#"
+
 = link_to 'Edit', edit_bill_path(@bill)
 \|
 = link_to 'Back', bills_path
