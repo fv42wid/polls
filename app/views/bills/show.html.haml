@@ -28,8 +28,15 @@
           %th Text
           %td= simple_format(@bill.body)
 
-    %div.col-sm-4
+    %div.col-sm-4.text-center
       %h2 Vote On This Bill
+      %small ...and we'll compare your vote against your representative
+      %br
+      %br
+      %div.row
+        %button.btn.btn-success{:type => 'button', :disabled => 'disabled'} Vote Yes
+        %button.btn.btn-danger{:type => 'button', :disabled => 'disabled'} Vote No
+      %small Log in to vote now!
 
 = link_to 'Edit', edit_bill_path(@bill)
 \|
