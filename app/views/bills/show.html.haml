@@ -42,8 +42,8 @@
 
       %div.row.bill-votes
         %div.col-sm-12
-          %span.label.label-success 59% For
-          %span.label.label-danger 41% Against
+          %span.label.label-success #{number_to_percentage(@user_yes_percent * 100, precision: 0)} For
+          %span.label.label-danger #{number_to_percentage(@user_no_percent * 100, precision: 0)} Against
           %br
           = link_to "See My District", "#"
 
