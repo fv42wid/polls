@@ -35,8 +35,9 @@
       %br
       %div.row
         = form_for [@bill, @user_poll] do |f|
-          %button.btn.btn-success{:type => 'button', :disabled => !user_signed_in?} Vote Yes
-          %button.btn.btn-danger{:type => 'button', :disabled => !user_signed_in?} Vote No
+          = f.submit 'Vote Yes', :class => 'btn btn-success', :disabled => !user_signed_in?
+          = f.submit 'Vote No', :class => 'btn btn-danger', :disabled => !user_signed_in?
+
       %small Log in to vote now!
 
       %div.row.bill-votes

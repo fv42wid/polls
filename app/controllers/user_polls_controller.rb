@@ -24,6 +24,7 @@ class UserPollsController < ApplicationController
   # POST /user_polls
   # POST /user_polls.json
   def create
+    byebug
     @user_poll = UserPoll.new(user_poll_params)
 
     respond_to do |format|
