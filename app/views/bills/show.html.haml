@@ -34,8 +34,9 @@
       %br
       %br
       %div.row
-        %button.btn.btn-success{:type => 'button', :disabled => 'disabled'} Vote Yes
-        %button.btn.btn-danger{:type => 'button', :disabled => 'disabled'} Vote No
+        = form_for [@bill, @user_poll] do |f|
+          %button.btn.btn-success{:type => 'button', :disabled => !user_signed_in?} Vote Yes
+          %button.btn.btn-danger{:type => 'button', :disabled => !user_signed_in?} Vote No
       %small Log in to vote now!
 
       %div.row.bill-votes
