@@ -24,12 +24,17 @@ class UserPollsController < ApplicationController
   # POST /user_polls
   # POST /user_polls.json
   def create
-    byebug
+
+    @bill = Bill.find(params[:bill_id])
     @user_poll = UserPoll.new(user_poll_params)
+    @user_poll.user_id = current_user.id
+    @user_poll.bill_id = params[:bill_id]
+    @user_poll.user_zip = current_user.zip
+    @user_poll.user_vote = params[:commit][5,10].upcase
 
     respond_to do |format|
       if @user_poll.save
-        format.html { redirect_to @user_poll, notice: 'User poll was successfully created.' }
+        format.html { redirect_to @bill, notice: 'User poll was successfully created.' }
         format.json { render :show, status: :created, location: @user_poll }
       else
         format.html { render :new }
