@@ -14,8 +14,8 @@ class BillsController < ApplicationController
     @user_poll_yes = UserPoll.where(:bill_id => params[:id], :user_vote => 'YES').count
     @user_poll_no = UserPoll.where(:bill_id => params[:id], :user_vote => 'NO').count
     @user_poll_total = @user_poll_yes + @user_poll_no
-    @user_yes_percent = @user_poll_yes / @user_poll_total
-    @user_no_percent = @user_poll_no / @user_poll_total
+    @user_yes_percent = @user_poll_yes.to_f / @user_poll_total
+    @user_no_percent = @user_poll_no.to_f / @user_poll_total
   end
 
   # GET /bills/new

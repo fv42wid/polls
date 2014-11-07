@@ -45,6 +45,10 @@
           %span.label.label-success #{number_to_percentage(@user_yes_percent * 100, precision: 0)} For
           %span.label.label-danger #{number_to_percentage(@user_no_percent * 100, precision: 0)} Against
           %br
+          %small
+            = @user_poll_total
+            Total Votes
+          %br
           = link_to "See My District", "#"
 
 = link_to 'Edit', edit_bill_path(@bill)
