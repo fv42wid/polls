@@ -1,0 +1,19 @@
+= form_for @district do |f|
+  - if @district.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@district.errors.count, "error")} prohibited this district from being saved:"
+      %ul
+        - @district.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :district
+    = f.text_field :district
+  .field
+    = f.label :zip
+    = f.text_field :zip
+  .actions
+    = f.submit 'Save'

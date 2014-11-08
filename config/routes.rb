@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :districts
+
   resources :reps
 
   devise_for :users

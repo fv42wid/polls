@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b State:
+  = @district.state
+%p
+  %b District:
+  = @district.district
+%p
+  %b Zip:
+  = @district.zip
+
+= link_to 'Edit', edit_district_path(@district)
+\|
+= link_to 'Back', districts_path
