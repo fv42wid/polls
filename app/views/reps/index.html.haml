@@ -1,0 +1,47 @@
+%h1 Listing reps
+
+%table
+  %tr
+    %th Nyt
+    %th First name
+    %th Last name
+    %th Rep url
+    %th Role
+    %th Gender
+    %th Party
+    %th Twitter
+    %th Youtube
+    %th Seniority
+    %th Next election
+    %th Govtrack
+    %th State
+    %th District
+    %th Start date
+    %th
+    %th
+    %th
+
+  - @reps.each do |rep|
+    %tr
+      %td= rep.nyt_id
+      %td= rep.first_name
+      %td= rep.last_name
+      %td= rep.rep_url
+      %td= rep.role
+      %td= rep.gender
+      %td= rep.party
+      %td= rep.twitter_id
+      %td= rep.youtube_id
+      %td= rep.seniority
+      %td= rep.next_election
+      %td= rep.govtrack_id
+      %td= rep.state
+      %td= rep.district
+      %td= rep.start_date
+      %td= link_to 'Show', rep
+      %td= link_to 'Edit', edit_rep_path(rep)
+      %td= link_to 'Destroy', rep, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Rep', new_rep_path

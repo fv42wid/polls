@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :reps
+
   devise_for :users
   resources :bills do
     resources :user_polls

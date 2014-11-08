@@ -1,0 +1,55 @@
+= form_for @rep do |f|
+  - if @rep.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@rep.errors.count, "error")} prohibited this rep from being saved:"
+      %ul
+        - @rep.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nyt_id
+    = f.text_field :nyt_id
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :rep_url
+    = f.text_field :rep_url
+  .field
+    = f.label :role
+    = f.text_field :role
+  .field
+    = f.label :gender
+    = f.text_field :gender
+  .field
+    = f.label :party
+    = f.text_field :party
+  .field
+    = f.label :twitter_id
+    = f.text_field :twitter_id
+  .field
+    = f.label :youtube_id
+    = f.text_field :youtube_id
+  .field
+    = f.label :seniority
+    = f.number_field :seniority
+  .field
+    = f.label :next_election
+    = f.date_select :next_election
+  .field
+    = f.label :govtrack_id
+    = f.text_field :govtrack_id
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :district
+    = f.text_field :district
+  .field
+    = f.label :start_date
+    = f.date_select :start_date
+  .actions
+    = f.submit 'Save'

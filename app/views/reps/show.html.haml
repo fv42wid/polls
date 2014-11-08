@@ -1,0 +1,51 @@
+%p#notice= notice
+
+%p
+  %b Nyt:
+  = @rep.nyt_id
+%p
+  %b First name:
+  = @rep.first_name
+%p
+  %b Last name:
+  = @rep.last_name
+%p
+  %b Rep url:
+  = @rep.rep_url
+%p
+  %b Role:
+  = @rep.role
+%p
+  %b Gender:
+  = @rep.gender
+%p
+  %b Party:
+  = @rep.party
+%p
+  %b Twitter:
+  = @rep.twitter_id
+%p
+  %b Youtube:
+  = @rep.youtube_id
+%p
+  %b Seniority:
+  = @rep.seniority
+%p
+  %b Next election:
+  = @rep.next_election
+%p
+  %b Govtrack:
+  = @rep.govtrack_id
+%p
+  %b State:
+  = @rep.state
+%p
+  %b District:
+  = @rep.district
+%p
+  %b Start date:
+  = @rep.start_date
+
+= link_to 'Edit', edit_rep_path(@rep)
+\|
+= link_to 'Back', reps_path
