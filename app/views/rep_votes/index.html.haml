@@ -1,0 +1,23 @@
+%h1 Listing rep_votes
+
+%table
+  %tr
+    %th Rep
+    %th Bill
+    %th Vote
+    %th
+    %th
+    %th
+
+  - @rep_votes.each do |rep_vote|
+    %tr
+      %td= rep_vote.rep_id
+      %td= rep_vote.bill_id
+      %td= rep_vote.vote
+      %td= link_to 'Show', rep_vote
+      %td= link_to 'Edit', edit_rep_vote_path(rep_vote)
+      %td= link_to 'Destroy', rep_vote, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Rep vote', new_bill_rep_vote_path

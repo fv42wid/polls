@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Rep:
+  = @rep_vote.rep_id
+%p
+  %b Bill:
+  = @rep_vote.bill_id
+%p
+  %b Vote:
+  = @rep_vote.vote
+
+= link_to 'Edit', edit_rep_vote_path(@rep_vote)
+\|
+= link_to 'Back', rep_votes_path

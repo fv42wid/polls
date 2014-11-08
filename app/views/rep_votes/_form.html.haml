@@ -1,0 +1,19 @@
+= form_for [@bill, @rep_vote] do |f|
+  - if @rep_vote.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@rep_vote.errors.count, "error")} prohibited this rep_vote from being saved:"
+      %ul
+        - @rep_vote.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :rep_id
+    = f.number_field :rep_id
+  .field
+    = f.label :bill_id
+    = f.number_field :bill_id
+  .field
+    = f.label :vote
+    = f.text_field :vote
+  .actions
+    = f.submit 'Save'

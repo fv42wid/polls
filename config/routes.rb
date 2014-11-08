@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :bills do
     resources :user_polls
+    resources :rep_votes
   end
 
   root to: "bills#index"

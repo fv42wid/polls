@@ -1,4 +1,5 @@
 class UserPoll < ActiveRecord::Base
-  belongs_to :user, :bill
+  belongs_to :user
+  belongs_to :bill
 
 end
