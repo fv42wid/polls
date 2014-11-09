@@ -4,7 +4,8 @@ class UserPollsController < ApplicationController
   # GET /user_polls
   # GET /user_polls.json
   def index
-    @user_polls = UserPoll.all
+    @bill = Bill.find(params[:bill_id])
+    @user_polls = UserPoll.where(:bill_id => @bill)
   end
 
   # GET /user_polls/1

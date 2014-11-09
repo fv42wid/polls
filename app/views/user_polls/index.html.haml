@@ -2,16 +2,24 @@
 
 %table
   %tr
+    %th User
+    %th Bill
+    %th Zip
+    %th Vote
     %th
     %th
     %th
 
   - @user_polls.each do |user_poll|
     %tr
-      %td= link_to 'Show', user_poll
-      %td= link_to 'Edit', edit_user_poll_path(user_poll)
-      %td= link_to 'Destroy', user_poll, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= user_poll.user_id
+      %td= user_poll.bill_id
+      %td= user_poll.user_zip
+      %td= user_poll.user_vote
+      %td= link_to 'Show', bill_user_poll_path(@bill, user_poll)
+      %td= link_to 'Edit', edit_bill_user_poll_path(@bill, user_poll)
+      %td= link_to 'Destroy', bill_user_poll_path(@bill, user_poll), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New User poll', new_user_poll_path
+= link_to 'New User poll', new_bill_user_poll_path
