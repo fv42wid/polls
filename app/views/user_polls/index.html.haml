@@ -1,25 +1,24 @@
-%h1 Listing user_polls
+%div.container
+  %div.row
+    %div.col-sm-8
+      %h1= "#{@bill.bill_id} Polls"
+      %h2 National
+      %p= "#{number_to_percentage(@user_yes_percent * 100, precision: 0)} Yes"
+      %p= "#{number_to_percentage(@user_no_percent * 100, precision: 0)} No"
+      %p= "#{@user_poll_total} Total Votes"
 
-%table
-  %tr
-    %th User
-    %th Bill
-    %th Zip
-    %th Vote
-    %th
-    %th
-    %th
+      %h2 My District
+      - if user_signed_in?
+        %p= "#{number_to_percentage(@local_yes_percent * 100, precision: 0)} Yes"
+        %p= "#{number_to_percentage(@local_no_percent * 100, precision: 0)} No"
+        %p= "#{@local_poll_total} Total Votes"
+      - else
+        %p Please login to see voting in your district
 
-  - @user_polls.each do |user_poll|
-    %tr
-      %td= user_poll.user_id
-      %td= user_poll.bill_id
-      %td= user_poll.user_zip
-      %td= user_poll.user_vote
-      %td= link_to 'Show', bill_user_poll_path(@bill, user_poll)
-      %td= link_to 'Edit', edit_bill_user_poll_path(@bill, user_poll)
-      %td= link_to 'Destroy', bill_user_poll_path(@bill, user_poll), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
 
-= link_to 'New User poll', new_bill_user_poll_path
+  %div.row
+    %div.col-sm-8
+      %br
+
+      = link_to 'New User poll', new_bill_user_poll_path
