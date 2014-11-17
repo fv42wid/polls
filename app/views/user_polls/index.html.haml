@@ -1,12 +1,17 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 %div.container
   %div.row
-    %div.col-sm-8
+    %div.col-sm-3
       %h1= "#{@bill.bill_id} Polls"
       %h2 National
       %p= "#{number_to_percentage(@user_yes_percent * 100, precision: 0)} Yes"
       %p= "#{number_to_percentage(@user_no_percent * 100, precision: 0)} No"
       %p= "#{@user_poll_total} Total Votes"
+    %div.col-sm-4
+      = pie_chart UserPoll.where(:bill_id => @bill).group(:user_vote).count
 
+  %div.row
+    %div.col-sm-3
       %h2 My District
       - if user_signed_in?
         %p= "#{number_to_percentage(@local_yes_percent * 100, precision: 0)} Yes"
