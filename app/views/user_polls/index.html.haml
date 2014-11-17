@@ -8,7 +8,7 @@
       %p= "#{number_to_percentage(@user_no_percent * 100, precision: 0)} No"
       %p= "#{@user_poll_total} Total Votes"
     %div.col-sm-4
-      = pie_chart UserPoll.where(:bill_id => @bill).group(:user_vote).count
+      = pie_chart UserPoll.where(:bill_id => @bill).group(:user_vote).count, colors: ["green", "red"]
 
   %div.row
     %div.col-sm-3
