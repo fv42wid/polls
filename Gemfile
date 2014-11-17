@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 gem 'pg'
 gem 'haml-rails'
 gem 'devise'
+gem 'chartkick'
 
 group :production do
   gem 'rails_12factor'
