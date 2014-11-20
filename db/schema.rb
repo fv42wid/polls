@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108205653) do
+ActiveRecord::Schema.define(version: 20141120015924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141108205653) do
     t.date     "next_election"
     t.string   "govtrack_id"
     t.string   "state"
-    t.string   "district"
+    t.string   "district_number"
     t.date     "start_date"
     t.datetime "created_at"
     t.datetime "updated_at"

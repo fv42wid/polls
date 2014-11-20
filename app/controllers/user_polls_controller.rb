@@ -22,6 +22,7 @@ class UserPollsController < ApplicationController
       @district = District.find_by_zip(current_user.zip.to_s)
       @user_state = @district.state
       @user_district = @district.district
+      @rep = Rep.find_by state: @user_state, district_number: @user_district
 
     end
   end
