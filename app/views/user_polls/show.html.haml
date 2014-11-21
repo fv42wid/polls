@@ -3,7 +3,10 @@
   %div.row
     %div.col-sm-3
       %h1= "#{@bill.bill_id} Polls"
-      %small= link_to "Back to #{@bill.bill_id}", bill_path(@bill)
+      %small
+        = link_to "Back to #{@bill.bill_id}", bill_path(@bill)
+        |
+        = link_to "See all Districts", bill_user_polls_path(@bill)
       %h2 National
       %p= "#{number_to_percentage(@user_yes_percent * 100, precision: 0)} Yes"
       %p= "#{number_to_percentage(@user_no_percent * 100, precision: 0)} No"
