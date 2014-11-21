@@ -23,6 +23,7 @@ class UserPollsController < ApplicationController
       @user_state = @district.state
       @user_district = @district.district
       @rep = Rep.find_by state: @user_state, district_number: @user_district
+      @rep_vote = RepVote.find_by rep_id: @rep.id, bill_id: @bill.id
 
     end
   end

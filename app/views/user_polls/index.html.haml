@@ -18,7 +18,7 @@
         %p= "#{number_to_percentage(@local_yes_percent * 100, precision: 0)} Yes"
         %p= "#{number_to_percentage(@local_no_percent * 100, precision: 0)} No"
         %p= "#{@local_poll_total} Total Votes"
-        %p= "#{@rep.first_name} #{@rep.last_name}"
+        %p= "#{@rep.first_name} #{@rep.last_name} voted #{@rep_vote.vote}"
       - else
         %p Please login to see voting in your district
     %div.col-sm-4
