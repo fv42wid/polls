@@ -1,5 +1,5 @@
 class UserPollsController < ApplicationController
-  before_action :set_user_poll, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_poll, only: [:edit, :update, :destroy]
 
   # GET /user_polls
   # GET /user_polls.json
@@ -12,9 +12,24 @@ class UserPollsController < ApplicationController
     @user_yes_percent = @user_poll_yes.to_f / @user_poll_total
     @user_no_percent = @user_poll_no.to_f / @user_poll_total
 
+    @districts = District.all
+
+  end
+
+  # GET /user_polls/1
+  # GET /user_polls/1.json
+  def show
+    @bill = Bill.find(params[:bill_id])
+    @user_polls = UserPoll.where(:bill_id => @bill)
+    @user_poll_yes = UserPoll.where(:bill_id => @bill, :user_vote => 'YES').count
+    @user_poll_no = UserPoll.where(:bill_id => @bill, :user_vote => 'NO').count
+    @user_poll_total = @user_poll_yes + @user_poll_no
+    @user_yes_percent = @user_poll_yes.to_f / @user_poll_total
+    @user_no_percent = @user_poll_no.to_f / @user_poll_total
+
     if user_signed_in?
-      @local_polls_yes = UserPoll.where(:bill_id => @bill, :user_zip => current_user.zip.to_s, :user_vote => 'YES').count
-      @local_polls_no = UserPoll.where(:bill_id => @bill, :user_zip => current_user.zip.to_s, :user_vote => 'NO').count
+      @local_polls_yes = UserPoll.where(:bill_id => @bill, :user_zip => params[:id], :user_vote => 'YES').count
+      @local_polls_no = UserPoll.where(:bill_id => @bill, :user_zip => params[:id], :user_vote => 'NO').count
       @local_poll_total = @local_polls_yes + @local_polls_no
       @local_yes_percent = @local_polls_yes.to_f / @local_poll_total
       @local_no_percent = @local_polls_no.to_f / @local_poll_total
@@ -26,11 +41,6 @@ class UserPollsController < ApplicationController
       @rep_vote = RepVote.find_by rep_id: @rep.id, bill_id: @bill.id
 
     end
-  end
-
-  # GET /user_polls/1
-  # GET /user_polls/1.json
-  def show
   end
 
   # GET /user_polls/new

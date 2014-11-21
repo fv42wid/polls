@@ -12,20 +12,11 @@
       = pie_chart UserPoll.where(:bill_id => @bill).group(:user_vote).count, colors: ["green", "red"]
 
   %div.row
-    %div.col-sm-3
-      %h2 My District
-      %h4= "#{@user_state} District #{@user_district}"
-      - if user_signed_in?
-        %p= "#{number_to_percentage(@local_yes_percent * 100, precision: 0)} Yes"
-        %p= "#{number_to_percentage(@local_no_percent * 100, precision: 0)} No"
-        %p= "#{@local_poll_total} Total Votes"
-        %p= "#{@rep.first_name} #{@rep.last_name} voted #{@rep_vote.vote}"
-      - else
-        %p Please login to see voting in your district
     %div.col-sm-4
-      - if user_signed_in?
-        = pie_chart UserPoll.where(:bill_id => @bill, :user_zip => current_user.zip.to_s).group(:user_vote).count, colors: ["green", "red"]
-
+      %h2 See Polls By District
+      %ul
+        - @districts.each do |district|
+          %li= link_to "#{district.state} District #{district.district}", bill_user_poll_path(@bill, district.zip)
 
 
   %div.row
