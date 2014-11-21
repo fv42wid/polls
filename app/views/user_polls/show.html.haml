@@ -1,6 +1,35 @@
-%p#notice= notice
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+%div.container
+  %div.row
+    %div.col-sm-3
+      %h1= "#{@bill.bill_id} Polls"
+      %small= link_to "Back to #{@bill.bill_id}", bill_path(@bill)
+      %h2 National
+      %p= "#{number_to_percentage(@user_yes_percent * 100, precision: 0)} Yes"
+      %p= "#{number_to_percentage(@user_no_percent * 100, precision: 0)} No"
+      %p= "#{@user_poll_total} Total Votes"
+    %div.col-sm-4
+      = pie_chart UserPoll.where(:bill_id => @bill).group(:user_vote).count, colors: ["green", "red"]
+
+  %div.row
+    %div.col-sm-3
+      %h2 My District
+      %h4= "#{@user_state} District #{@user_district}"
+      - if user_signed_in?
+        %p= "#{number_to_percentage(@local_yes_percent * 100, precision: 0)} Yes"
+        %p= "#{number_to_percentage(@local_no_percent * 100, precision: 0)} No"
+        %p= "#{@local_poll_total} Total Votes"
+        %p= "#{@rep.first_name} #{@rep.last_name} voted #{@rep_vote.vote}"
+      - else
+        %p Please login to see voting in your district
+    %div.col-sm-4
+      - if user_signed_in?
+        = pie_chart UserPoll.where(:bill_id => @bill, :user_zip => current_user.zip.to_s).group(:user_vote).count, colors: ["green", "red"]
 
 
-= link_to 'Edit', edit_user_poll_path(@user_poll)
-\|
-= link_to 'Back', user_polls_path
+
+  %div.row
+    %div.col-sm-8
+      %br
+
+      = link_to 'New User poll', new_bill_user_poll_path
