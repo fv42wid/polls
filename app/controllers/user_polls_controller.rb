@@ -12,7 +12,7 @@ class UserPollsController < ApplicationController
     @user_yes_percent = @user_poll_yes.to_f / @user_poll_total
     @user_no_percent = @user_poll_no.to_f / @user_poll_total
 
-    @districts = District.all
+    @districts = District.select('state, district_number').group('state, district_number').all
 
   end
 
