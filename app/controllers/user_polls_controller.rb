@@ -41,10 +41,9 @@ class UserPollsController < ApplicationController
       @local_yes_percent = @local_polls_yes.to_f / @local_poll_total
       @local_no_percent = @local_polls_no.to_f / @local_poll_total
 
-      @district = District.find_by_zip(current_user.zip.to_s)
-      @user_state = @district.state
-      @user_district = @district.district_number
-      @rep = Rep.find_by state: @user_state, district_number: @user_district
+      @user_state = @user_district.state
+
+      @rep = Rep.find_by state: @user_district.state, district_number: @user_district.district_number
       @rep_vote = RepVote.find_by rep_id: @rep.id, bill_id: @bill.id
 
     end
