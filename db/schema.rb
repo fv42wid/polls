@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120015924) do
+ActiveRecord::Schema.define(version: 20141122210117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141120015924) do
 
   create_table "districts", force: true do |t|
     t.string   "state"
-    t.string   "district"
+    t.string   "district_number"
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
