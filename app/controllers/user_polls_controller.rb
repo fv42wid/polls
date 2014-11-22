@@ -28,15 +28,22 @@ class UserPollsController < ApplicationController
     @user_no_percent = @user_poll_no.to_f / @user_poll_total
 
     if user_signed_in?
-      @local_polls_yes = UserPoll.where(:bill_id => @bill, :user_zip => params[:id], :user_vote => 'YES').count
-      @local_polls_no = UserPoll.where(:bill_id => @bill, :user_zip => params[:id], :user_vote => 'NO').count
+      @user_district = District.find_by_zip(current_user.zip.to_s)
+      @all_zips_in_district = District.where(state: @user_district.state, district_number: @user_district.district_number)
+      @zips = []
+      @all_zips_in_district.each do |district|
+        @zips << district.zip
+      end
+
+      @local_polls_yes = UserPoll.where(:bill_id => @bill, :user_zip => @zips, :user_vote => 'YES').count
+      @local_polls_no = UserPoll.where(:bill_id => @bill, :user_zip => @zips, :user_vote => 'NO').count
       @local_poll_total = @local_polls_yes + @local_polls_no
       @local_yes_percent = @local_polls_yes.to_f / @local_poll_total
       @local_no_percent = @local_polls_no.to_f / @local_poll_total
 
       @district = District.find_by_zip(current_user.zip.to_s)
       @user_state = @district.state
-      @user_district = @district.district
+      @user_district = @district.district_number
       @rep = Rep.find_by state: @user_state, district_number: @user_district
       @rep_vote = RepVote.find_by rep_id: @rep.id, bill_id: @bill.id
 
