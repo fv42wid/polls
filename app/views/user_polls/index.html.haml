@@ -17,7 +17,7 @@
       %h2 See Polls By District
       %ul
         - @districts.each do |district|
-          %li= link_to "#{district.state} District #{district.district_number}", bill_user_poll_path(@bill, '19063')
+          %li= link_to "#{district.state} District #{district.district_number}", bill_user_poll_path(@bill, "#{district.state}#{district.district_number}")
 
 
   %div.row
