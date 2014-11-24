@@ -19,6 +19,9 @@ class UserPollsController < ApplicationController
   # GET /user_polls/1
   # GET /user_polls/1.json
   def show
+    @state = params[:id][0,2]
+    @district_number = params[:id][2..-1]
+    byebug
     @bill = Bill.find(params[:bill_id])
     @user_polls = UserPoll.where(:bill_id => @bill)
     @user_poll_yes = UserPoll.where(:bill_id => @bill, :user_vote => 'YES').count
