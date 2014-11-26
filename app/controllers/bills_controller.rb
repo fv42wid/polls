@@ -16,6 +16,11 @@ class BillsController < ApplicationController
     @user_poll_total = @user_poll_yes + @user_poll_no
     @user_yes_percent = @user_poll_yes.to_f / @user_poll_total
     @user_no_percent = @user_poll_no.to_f / @user_poll_total
+
+    if user_signed_in?
+      @district = District.find_by_zip(current_user.zip.to_s)
+
+    end
   end
 
   # GET /bills/new

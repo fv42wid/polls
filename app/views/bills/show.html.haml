@@ -50,7 +50,7 @@
             Total Votes
           %br
           - if user_signed_in?
-            = link_to "See My District", bill_user_poll_path(@bill, current_user.zip)
+            = link_to "See My District", bill_user_poll_path(@bill, "#{@district.state}#{@district.district_number}")
           - else
             = link_to "See My District", bill_user_polls_path(@bill)
 
